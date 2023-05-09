@@ -46,11 +46,13 @@ lf <- list.files(pattern =".tsv")
 ## outliers
 ktoreNA <- which(is.na(desc$SEX) | is.na(desc$AGE))
 lf <- lf[-ktoreNA]
+desc <- desc[-ktoreNA]
 
 #based on Brouffaerts criterion:
 outliers <- c("HIP03111.tsv", "HIP03678.tsv", "HIP14118.tsv", "HIP14138.tsv", "HIP16867.tsv");
 ktore <- which(lf %in% outliers)
 lf=lf[-ktore]
+desc <- desc[-ktoreNA]
 
 summary <- matrix(NA, ncol=4, nrow=length(lf), 
                 dimnames=list(lf, c("prod.unique", "prod.total", "non.unique", "non_total")))
@@ -92,5 +94,6 @@ for(i in lf) {
   write.table(status, "preprocessed/statusDiv.txt", sep = "\t", row.names = T, col.names = T)
   write.table(sequence.prod, "preprocessed/prodSeqDiv.txt", sep = "\t", row.names = T, col.names = T)
   write.table(sequence.non, "preprocessed/nonSeqDiv.txt", sep = "\t", row.names = T, col.names = T)
+  write.table(desc, "preprocessed/sample_description_Dean.txt", sep = "\t", row.names = T, col.names = T)
   
 }
