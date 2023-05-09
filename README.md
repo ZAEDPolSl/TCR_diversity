@@ -13,4 +13,5 @@ downsampling functional allows for the proprocessing and calclulation of Status/
 
 ## Linear regression modelling
 regression_models_crosssectional function allows for constructing weighted regression models as well as segmented regression models on Dean et al dataset.
+mixed-effectsModels are created to work with the longitudinal dataset results.
 
